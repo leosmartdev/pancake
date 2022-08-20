@@ -24,7 +24,7 @@ const factoryContract = new web3_HTTPS.eth.Contract(
 );
 
 const run = async () => {
-  let gasPrice = web3_HTTPS.utils.toHex(web3_HTTPS.utils.toWei(process.env.GAS_PRICE, 'Gwei'));
+  let gasPrice = web3_HTTPS.utils.toHex(web3_HTTPS.eth.getGasPrice());
   const pair_address = await factoryContract.methods.getPair(process.env.BASETOKEN, process.env.TARGETTOKEN).call();
   const pairContract = new web3_HTTPS.eth.Contract(
     pair_abi,
